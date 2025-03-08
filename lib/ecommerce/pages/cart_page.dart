@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../components/button_nav.dart';
 import '../model/cart_model.dart';
 
 class CartPage extends StatelessWidget {

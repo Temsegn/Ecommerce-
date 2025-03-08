@@ -1,21 +1,24 @@
 import 'package:flutter/material.dart';
 import '../model/product_model.dart';
+import '../model/favorite_model.dart'; // Import your FavoriteModel
 
 class ProductTile extends StatelessWidget {
   final ProductModel shoes;
   final VoidCallback onAddToCart;
+  final VoidCallback onAddToFavorites; // Add this line
 
   const ProductTile({
     super.key,
     required this.shoes,
     required this.onAddToCart,
+    required this.onAddToFavorites, // Add this line
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
-      width: 250, // Give a fixed width for the horizontal scroll layout
+      width: 250,
       padding: EdgeInsets.all(12),
       decoration: BoxDecoration(
         color: Colors.white,
@@ -33,15 +36,34 @@ class ProductTile extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          // 🖼️ Product Image
-          ClipRRect(
-            borderRadius: BorderRadius.circular(5),
-            child: Image.network(
-              shoes.imageUrl,
-              height: 150, // Set height for better alignment
-              width: double.infinity,
-              fit: BoxFit.cover,
-            ),
+          // 🖼️ Product Image with Favorite Icon
+          Stack(
+            children: [
+              ClipRRect(
+                borderRadius: BorderRadius.circular(5),
+                child: Image.network(
+                  shoes.imageUrl,
+                  height: 150,
+                  width: double.infinity,
+                  fit: BoxFit.cover,
+                ),
+              ),
+              // Favorite Icon (Top-Right Corner)
+              Positioned(
+                top: 5,
+                right: 5,
+                child: IconButton(
+                  icon: Icon(
+                    // Check if the product is in favorites
+                    Favorite.favorites.contains(shoes)
+                        ? Icons.favorite
+                        : Icons.favorite_border,
+                    color: Colors.red,
+                  ),
+                  onPressed: onAddToFavorites,
+                ),
+              ),
+            ],
           ),
           SizedBox(height: 12),
 

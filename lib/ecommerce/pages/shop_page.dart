@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import '/ecommerce/model/product_model.dart';
-import '/ecommerce/components/product_tile.dart';
+import '/ecommerce/model/product_model.dart'; 
+import '/ecommerce/components/product_tile.dart'; 
 import 'shoes_list.dart';
 import '../model/cart_model.dart';
+import '../model/favorite_model.dart'; 
 
 class ShopPage extends StatefulWidget {
   const ShopPage({super.key});
@@ -136,6 +137,16 @@ class _ShopPageState extends State<ShopPage> {
                               });
                               _showAddToCartDialog();
                             },
+                            onAddToFavorites: () {
+          setState(() {
+            // Add/remove from favorites
+            if (Favorite.favorites.contains(_filteredShoesList[index])) {
+              Favorite.removeItem(_filteredShoesList[index]);
+            } else {
+              Favorite.addItem(_filteredShoesList[index]);
+            }
+          });
+        },
                           ),
                         );
                       },
