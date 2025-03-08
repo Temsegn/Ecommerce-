@@ -23,7 +23,7 @@ class EcommercePage extends StatelessWidget {
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
-            colors: [Colors.blueAccent, Colors.purpleAccent],
+            colors: [const Color.fromARGB(255, 204, 204, 206), Colors.white],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
           ),
@@ -39,10 +39,14 @@ class EcommercePage extends StatelessWidget {
                 // Nike Logo
                 Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Image.asset(
-                    'assets/image/nike.png',
-                    width: 220,
-                    height: 220,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(5),
+                    child: Image.network(
+                      "https://images.unsplash.com/photo-1543508282-6319a3e2621f",
+                      height: 230,
+                      fit: BoxFit.cover,
+                      width: double.infinity,
+                    ),
                   ),
                 ),
                 SizedBox(height: 30),
@@ -51,7 +55,7 @@ class EcommercePage extends StatelessWidget {
                 Text(
                   "Just Do It",
                   style: TextStyle(
-                    color: Colors.white,
+                    color: const Color.fromARGB(255, 37, 37, 37),
                     fontWeight: FontWeight.bold,
                     fontSize: 36,
                     letterSpacing: 1.5,
@@ -63,7 +67,7 @@ class EcommercePage extends StatelessWidget {
                 Text(
                   "The biggest shoes marketplace in Ethiopia and the world, associated with Nike.",
                   style: TextStyle(
-                    color: Colors.white70,
+                    color: const Color.fromARGB(179, 81, 80, 80),
                     fontSize: 18,
                     fontStyle: FontStyle.italic,
                     letterSpacing: 1.2,

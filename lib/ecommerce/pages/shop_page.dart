@@ -57,7 +57,7 @@ class _ShopPageState extends State<ShopPage> {
               onPressed: () {
                 Navigator.of(context).pop(); // Close the dialog
               },
-              child: Text('OK'),
+              child: Text('Dismiss'),
             ),
           ],
         );
