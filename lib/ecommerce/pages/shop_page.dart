@@ -45,13 +45,13 @@ class _ShopPageState extends State<ShopPage> {
   }
 
   // Function to show the "Item added to cart" dialog
-  void _showAddToCartDialog() {
+  void _showAddToCartDialog(String name) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
           title: Text('Success'),
-          content: Text('Item added to cart successfully!'),
+          content: Text('${name} added to cart successfully!'),
           actions: [
             TextButton(
               onPressed: () {
@@ -135,7 +135,7 @@ class _ShopPageState extends State<ShopPage> {
                                 // Add the product to the cart when clicked
                                 Cart.addItem(_filteredShoesList[index]);
                               });
-                              _showAddToCartDialog();
+                              _showAddToCartDialog(_filteredShoesList[index].title);
                             },
                             onAddToFavorites: () {
           setState(() {
